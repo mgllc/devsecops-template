@@ -1,14 +1,20 @@
 name: CodeQL (SAST)
 
+# NOTE: this file is a template — copy it into the target repo and restore
+# the push/pull_request/schedule triggers below. Left as workflow_dispatch-only
+# here because devsecops-template itself has no JS/Python source for CodeQL
+# to analyze (it's just YAML/Markdown config), which would otherwise fail
+# every run with "no source code seen during build".
 on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
-  schedule:
-    # Weekly scan even if nobody pushes, so newly-disclosed CVEs
-    # against unchanged code still get caught.
-    - cron: "0 6 * * 1"
+  workflow_dispatch:
+  # push:
+  #   branches: [main]
+  # pull_request:
+  #   branches: [main]
+  # schedule:
+  #   # Weekly scan even if nobody pushes, so newly-disclosed CVEs
+  #   # against unchanged code still get caught.
+  #   - cron: "0 6 * * 1"
 
 permissions:
   contents: read
